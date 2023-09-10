@@ -1,0 +1,55 @@
+org: angulojd
+app: restaurante
+service: restaurante
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: python3.8
+
+functions:
+  createUser:
+    handler: handler.user
+    events:
+      - httpApi:
+          path: /createUser
+          method: post
+          
+  createProduct:
+    handler: handler.product
+    events:
+      - httpApi:
+          path: /createProduct
+          method: post
+
+  createCategory:
+    handler: handler.category
+    events:
+      - httpApi:
+          path: /createCategory
+          method: post
+
+  createOrder:
+    handler: handler.order
+    events:
+      - httpApi:
+          path: /createOrder
+          method: post
+      
+  updateProduct:
+    handler: handler.updateProduct
+    events:
+      - httpApi:
+          path: /updateProduct
+          method: post
+
+  reportProduct:
+    handler: handler.report
+    events:
+      - httpApi:
+          path: /reportProduct
+          method: post
+    
+          
+plugins:
+  - serverless-offline
